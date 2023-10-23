@@ -62,7 +62,7 @@ def lastStoneWeight(stones:  List[int])->int:
             heap.pop(heap.index(largest[0]))
             new_weight = abs(largest[0] - largest[1])
             heap[heap.index(largest[1])] = new_weight
-        heapq.heapify(heap)
+    heapq.heapify(heap)
 
     return heap[0] if len(heap) > 0 else 0
 
