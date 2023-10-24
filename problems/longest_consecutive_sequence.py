@@ -70,7 +70,6 @@ def longestConsecutive2(nums: List[int]) -> int:
             count += 1
             curr_longest += 1
         longest = max(longest, curr_longest)
-        
     
     return longest 
 
