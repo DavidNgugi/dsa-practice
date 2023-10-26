@@ -50,7 +50,7 @@ def maxSubArrayDynamic( nums: List[int]) -> int:
     """
     Dynamic programming Approach
     Time -> O(N)
-    Space -> O(1)
+    Space -> O(N) // N sums
     """
     # use max variable to store maximum sum, list or hashmap to store sums
     # go through the list, store sums as we check for currSum

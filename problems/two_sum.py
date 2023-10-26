@@ -1,8 +1,9 @@
-def twoSumByTwoPointers(nums, target):
+from typing import List
+
+def twoSumByTwoPointers(nums: List[int], target: int) -> List[int]:
     """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
+    Time -> O(nlogn) -> log n because eof sorting
+    Space -> O(1)
     """
 
     # two pointers, front and rear
@@ -30,7 +31,12 @@ def twoSumByTwoPointers(nums, target):
 
 
 def twoSumHashTable(nums, target):
-    # use hash table to keep track of indexes, use complement to find if already in table
+    """
+    Use hash table to keep track of indexes, use complement to find if already in table
+    Time -> O(n) 
+    Space -> O(1)
+    """
+    # 
     # O(n)
     n = len(nums)
 
@@ -45,9 +51,15 @@ def twoSumHashTable(nums, target):
             return [i, table[c]]
         else:
             table[nums[i]] = i
+    return []
 
 
 def twoSumBinarySearch(nums, target):
+    """
+    Use Binary Search
+    Time -> O(nlogn) 
+    Space -> O(1)
+    """
     n = len(nums)
 
     if n == 1:
@@ -68,3 +80,4 @@ def twoSumBinarySearch(nums, target):
                 front = mid + 1
             elif nums[mid] > comp:
                 rear = mid - 1
+    return []

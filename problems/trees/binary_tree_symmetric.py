@@ -45,7 +45,7 @@ def isSymmetric(root):
         if not left and not right:
             return True
 
-        # if either nodes are empty or values mattch, not symmetric
+        # if either nodes are empty or values match, not symmetric
         if not left or not right or left.val != right.val:
             return False
 
