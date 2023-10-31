@@ -1,13 +1,13 @@
 from pprint import pprint
+
+
 class GraphAdjMatrix:
     def __init__(self) -> None:
         self.graph = []
 
-
     def build_graph(self, nodes):
         for i in range(nodes):
             self.graph.append([0 for j in range(nodes)])
-
 
     def add_edge(self, v1, v2):
         if v1 == v2:
@@ -15,7 +15,6 @@ class GraphAdjMatrix:
             return
         self.graph[v1][v2] = 1
         self.graph[v2][v1] = 1
-
 
     def remove_edge(self, v1, v2):
         if self.graph[v1][v2] == 0:
@@ -30,14 +29,13 @@ class GraphAdjMatrix:
             for j in range(i):
                 print(f"{self.graph[i][j]} -> {self.graph[j][i]}")
 
+
 class GraphAdjList:
     def __init__(self) -> None:
         self.graph = {}
 
-
     def build_graph(self, nodes):
         pass
-
 
     def add_edge(self, v1, v2):
         if v1 not in self.graph:
@@ -57,7 +55,6 @@ class GraphAdjList:
             else:
                 index = self.graph[v1].index(v2)
                 self.graph[v1].remove(index)
-
 
     def display(self):
         pass
@@ -110,11 +107,11 @@ def floyd_warshall_algorithm(self):
 if __name__ == "__main__":
     g = GraphAdjMatrix()
     g.build_graph(4)
-    g.add_edge(0,1)
-    g.add_edge(1,0)
-    g.add_edge(0,2)
-    g.add_edge(2,0)
-    g.add_edge(2,1)
-    g.add_edge(0,3)
-    g.add_edge(3,0)
+    g.add_edge(0, 1)
+    g.add_edge(1, 0)
+    g.add_edge(0, 2)
+    g.add_edge(2, 0)
+    g.add_edge(2, 1)
+    g.add_edge(0, 3)
+    g.add_edge(3, 0)
     g.display()

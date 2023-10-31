@@ -5,7 +5,7 @@
 
 # Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
 # In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 3, the input represents the signed integer. -3.
- 
+
 # Example 1:
 
 # Input: n = 00000000000000000000000000001011
@@ -31,7 +31,7 @@ def hammingWeight(n):
     :rtype: int
     """
     count = 0
-    
+
     # while count < n:
     #     n &= n - 1
     #     count += 1
@@ -40,12 +40,13 @@ def hammingWeight(n):
         count += n & 1
         # shift right by 1 bit
         n >>= 1
-    
+
     print(count)
     return count
 
+
 if __name__ == "__main__":
-    n = int('11111111111111111111111111111101', 2)
+    n = int("11111111111111111111111111111101", 2)
     output = 31
 
     print(hammingWeight(n) == output)

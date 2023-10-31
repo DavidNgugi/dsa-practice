@@ -6,8 +6,8 @@ from typing import List
 
 # You are given an array of integers stones where stones[i] is the weight of the ith stone.
 
-# We are playing a game with the stones. On each turn, we choose the heaviest two stones and 
-# smash them together. Suppose the heaviest two stones have weights x and y with x <= y. 
+# We are playing a game with the stones. On each turn, we choose the heaviest two stones and
+# smash them together. Suppose the heaviest two stones have weights x and y with x <= y.
 # The result of this smash is:
 
 # If x == y, both stones are destroyed, and
@@ -19,7 +19,7 @@ from typing import List
 # Example 1:
 # Input: stones = [2,7,4,1,8,1]
 # Output: 1
-# Explanation: 
+# Explanation:
 # We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
 # we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
 # we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
@@ -29,15 +29,17 @@ from typing import List
 # Input: stones = [1]
 # Output: 1
 
+
 # Constraints:
 # 1 <= stones.length <= 30
 # 1 <= stones[i] <= 1000
-def lastStoneWeight(stones:  List[int])->int:
+def lastStoneWeight(stones: List[int]) -> int:
     """
+    Min Heap
     Time -> O(NlogN)
     Space -> O(N)
     """
-    
+
     # create heap
     # heaviest -> nlargest
     # if x==y, heappop
@@ -48,7 +50,7 @@ def lastStoneWeight(stones:  List[int])->int:
         return stones[0]
 
     if len(stones) == 2:
-        return 0 if stones[0] == stones[1] else abs(stones[1]-stones[0])
+        return 0 if stones[0] == stones[1] else abs(stones[1] - stones[0])
 
     heap = stones
     heapq.heapify(heap)
@@ -66,7 +68,8 @@ def lastStoneWeight(stones:  List[int])->int:
 
     return heap[0] if len(heap) > 0 else 0
 
-def lastStoneWeightSortedList(stones:  List[int])->int:
+
+def lastStoneWeightSortedList(stones: List[int]) -> int:
     """
     Time -> O(N)
     Space -> O(N)
@@ -83,8 +86,9 @@ def lastStoneWeightSortedList(stones:  List[int])->int:
         return s[0]
     return 0
 
+
 if __name__ == "__main__":
-    stones = [2,7,4,1,8,1]
+    stones = [2, 7, 4, 1, 8, 1]
     output = 1
 
     print(lastStoneWeight(stones) == output)

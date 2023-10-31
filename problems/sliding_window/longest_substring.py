@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-# Given a string s, find the length of the longest 
+# Given a string s, find the length of the longest
 # substring without repeating characters.
 
 # Example 1:
@@ -17,12 +17,12 @@
 # Output: 3
 # Explanation: The answer is "wke", with the length of 3.
 # Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
- 
+
 
 # Constraints:
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
-def lengthOfLongestSubstringNoRepeat(s:str)->int:
+def lengthOfLongestSubstringNoRepeat(s: str) -> int:
     """
     Time -> O(N)\n
     Space -> O(N) -> Set stores all characters
@@ -49,18 +49,19 @@ def lengthOfLongestSubstringNoRepeat(s:str)->int:
             seen.remove(s[left])
             left += 1
         seen.add(s[right])
-        maxLen = max(maxLen,right-left+1)
+        maxLen = max(maxLen, right - left + 1)
 
     # print(seen)
     return maxLen
 
-def lengthOfLongestSubstring2(s:str)->int:
+
+def lengthOfLongestSubstring2(s: str) -> int:
     """
     Time -> O(N)\n
     Space -> O(N) -> Set stores all characters
     """
     # len(s) is < 2, then len(s) -> 0 or 1
-   
+
     # sliding window technique (right, left pointers)
     # Hashmap to keep track of character occurences in window
     # maxLen variable to keep track of maximum length of substring from window
@@ -75,7 +76,7 @@ def lengthOfLongestSubstring2(s:str)->int:
     maxLen = 0
     seen = {}
 
-    left =  0
+    left = 0
 
     for right in range(n):
         # remove previous duplicates in window
@@ -83,9 +84,10 @@ def lengthOfLongestSubstring2(s:str)->int:
             del seen[s[left]]
             left += 1
         seen[str(s[right])] = 1
-        maxLen = max(maxLen,right-left+1)
+        maxLen = max(maxLen, right - left + 1)
 
     return maxLen
+
 
 if __name__ == "__main__":
     s = "abcabcbb"

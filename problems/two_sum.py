@@ -1,5 +1,6 @@
 from typing import List
 
+
 def twoSumByTwoPointers(nums: List[int], target: int) -> List[int]:
     """
     Time -> O(nlogn) -> log n because eof sorting
@@ -33,10 +34,10 @@ def twoSumByTwoPointers(nums: List[int], target: int) -> List[int]:
 def twoSumHashTable(nums, target):
     """
     Use hash table to keep track of indexes, use complement to find if already in table
-    Time -> O(n) 
+    Time -> O(n)
     Space -> O(1)
     """
-    # 
+    #
     # O(n)
     n = len(nums)
 
@@ -57,7 +58,7 @@ def twoSumHashTable(nums, target):
 def twoSumBinarySearch(nums, target):
     """
     Use Binary Search
-    Time -> O(nlogn) 
+    Time -> O(nlogn)
     Space -> O(1)
     """
     n = len(nums)

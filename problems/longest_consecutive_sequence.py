@@ -14,10 +14,11 @@ from typing import List
 # Example 2:
 # Input: nums = [0,3,7,2,5,8,4,6,0,1]
 # Output: 9
- 
+
 # Constraints:
 # 0 <= nums.length <= 105
 # -109 <= nums[i] <= 109
+
 
 def longestConsecutive(nums: List[int]) -> int:
     """
@@ -26,7 +27,7 @@ def longestConsecutive(nums: List[int]) -> int:
     """
     if not nums:
         return 0
-    
+
     if len(nums) == 1:
         return 1
 
@@ -41,8 +42,9 @@ def longestConsecutive(nums: List[int]) -> int:
         while num + count in seen:
             count += 1
         longest = max(longest, count)
-        
+
     return longest
+
 
 def longestConsecutive2(nums: List[int]) -> int:
     """
@@ -51,7 +53,7 @@ def longestConsecutive2(nums: List[int]) -> int:
     """
     if not nums:
         return 0
-    
+
     if len(nums) == 1:
         return 1
 
@@ -61,22 +63,23 @@ def longestConsecutive2(nums: List[int]) -> int:
     for num in nums:
         curr_longest, count = 1, 1
         while num - count in seen:
-            seen.remove(num-count)
+            seen.remove(num - count)
             count += 1
             curr_longest += 1
         count = 1
         while num + count in seen:
-            seen.remove(num+count)
+            seen.remove(num + count)
             count += 1
             curr_longest += 1
         longest = max(longest, curr_longest)
-    
-    return longest 
+
+    return longest
+
 
 if __name__ == "__main__":
-    nums = [100,4,200,1,3,2]
+    nums = [100, 4, 200, 1, 3, 2]
     output = 4
-    nums2 = [0,3,7,2,5,8,4,6,0,1]
+    nums2 = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
     output2 = 9
 
     print(longestConsecutive(nums) == output)

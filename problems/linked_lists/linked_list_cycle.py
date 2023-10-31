@@ -1,9 +1,8 @@
-
 # https://leetcode.com/problems/linked-list-cycle/
 
 # Given head, the head of a linked list, determine if the linked list has a cycle in it.
-# There is a cycle in a linked list if there is some node in the list that can be reached again by continuously 
-# following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer 
+# There is a cycle in a linked list if there is some node in the list that can be reached again by continuously
+# following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer
 # is connected to. Note that pos is not passed as a parameter.
 # Return true if there is a cycle in the linked list. Otherwise, return false.
 
@@ -26,21 +25,23 @@
 # The number of the nodes in the list is in the range [0, 104].
 # -105 <= Node.val <= 105
 # pos is -1 or a valid index in the linked-list.
- 
+
 # Follow up: Can you solve it using O(1) (i.e. constant) memory?
+
 
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 def hasCycle(head: ListNode) -> bool:
     """
     **Tortoise and Hare algorithm**
 
-    The idea is that we create two pointers, a slow one and a fast one. 
-    The slow pointer traverses the linked list 1 node at a time, 
-    while the fast pointer traverses the linked list 2 nodes at a time. 
+    The idea is that we create two pointers, a slow one and a fast one.
+    The slow pointer traverses the linked list 1 node at a time,
+    while the fast pointer traverses the linked list 2 nodes at a time.
     If at some point the two pointers meet on the same node, then that means a cycle exists.
 
     Time -> O(N)
@@ -49,7 +50,7 @@ def hasCycle(head: ListNode) -> bool:
 
     if not head or (head and not head.next):
         return False
-    
+
     fast = head
 
     while fast and fast.next:
@@ -59,5 +60,5 @@ def hasCycle(head: ListNode) -> bool:
         # checks if exact same in memory (position and value)
         if head is fast:
             return True
-    
+
     return False

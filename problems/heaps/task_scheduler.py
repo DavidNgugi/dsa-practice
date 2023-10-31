@@ -4,12 +4,12 @@ from typing import List
 
 # https://leetcode.com/problems/task-scheduler/description/
 
-# Given a characters array tasks, representing the tasks a CPU needs to do, 
+# Given a characters array tasks, representing the tasks a CPU needs to do,
 # where each letter represents a different task.
-# Tasks could be done in any order. Each task is done in one unit of time. 
+# Tasks could be done in any order. Each task is done in one unit of time.
 # For each unit of time, the CPU could complete either one task or just be idle.
 
-# However, there is a non-negative integer n that represents the cooldown period between two same tasks 
+# However, there is a non-negative integer n that represents the cooldown period between two same tasks
 # (the same letter in the array), that is that there must be at least n units of time between any two same tasks.
 
 # Return the least number of units of times that the CPU will take to finish all the given tasks.
@@ -17,7 +17,7 @@ from typing import List
 # Example 1:
 # Input: tasks = ["A","A","A","B","B","B"], n = 2
 # Output: 8
-# Explanation: 
+# Explanation:
 # A -> B -> idle -> A -> B -> idle -> A -> B
 # There is at least 2 units of time between any two same tasks.
 
@@ -34,7 +34,7 @@ from typing import List
 # Example 3:
 # Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
 # Output: 16
-# Explanation: 
+# Explanation:
 # One possible solution is
 # A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
 
@@ -42,6 +42,7 @@ from typing import List
 # 1 <= task.length <= 104
 # tasks[i] is upper-case English letter.
 # The integer n is in the range [0, 100].
+
 
 def leastInterval(tasks: List[str], n: int) -> int:
     """
@@ -51,7 +52,7 @@ def leastInterval(tasks: List[str], n: int) -> int:
 
     if n == 0:
         return len(tasks)
-    
+
     counter = Counter(tasks)
 
     counts = counter.values()
@@ -59,6 +60,7 @@ def leastInterval(tasks: List[str], n: int) -> int:
     maxVal = max(counts)
 
     return max(len(tasks), ((maxVal - 1) * (n + 1)) + list(counts).count(maxVal))
+
 
 def leastIntervalHeaps(tasks: List[str], n: int) -> int:
     """
@@ -69,7 +71,7 @@ def leastIntervalHeaps(tasks: List[str], n: int) -> int:
 
     if n == 0:
         return len(tasks)
-    
+
     count = Counter(tasks)
     heap = [-c for c in count.values()]
     heapq.heapify(heap)
@@ -83,14 +85,15 @@ def leastIntervalHeaps(tasks: List[str], n: int) -> int:
             # adding 1 to reduce the count that we'll add back to heap
             c = 1 + heapq.heappop(heap)
             if c:
-                q.append([c, n+time])
+                q.append([c, n + time])
         if q and q[0][1] == time:
             heapq.heappush(heap, q.popleft()[0])
 
     return time
 
+
 if __name__ == "__main__":
-    tasks = ["A","A","A","B","B","B"]
+    tasks = ["A", "A", "A", "B", "B", "B"]
     n = 2
     output = 8
 

@@ -19,7 +19,7 @@
 # 1. 1 step + 1 step + 1 step
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
- 
+
 
 # Constraints:
 
@@ -41,13 +41,14 @@ def climbStairs(n):
     def climb(n, memo):
         if n == 0 or n == 1:
             return 1
-        
+
         if n not in memo:
-            memo[n] = climb(n-1, memo) + climb(n-2, memo)
-        
+            memo[n] = climb(n - 1, memo) + climb(n - 2, memo)
+
         return memo[n]
-    
+
     return climb(n, memo)
+
 
 def climbStairs2(n):
     """
@@ -63,16 +64,17 @@ def climbStairs2(n):
     if n == 0 or n == 1:
         return 1
 
-    dp = [0] * (n+1)
+    dp = [0] * (n + 1)
     dp[0] = dp[1] = 1
 
     # we can now count from 2nd stair
-    for i in range(2, n+1):
-        dp[i] = dp[i-1] + dp[i-2]
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
 
     return dp[n]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     n = 6
     print(climbStairs(n))
     print(climbStairs2(n))

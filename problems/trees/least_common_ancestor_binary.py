@@ -2,8 +2,8 @@
 
 # Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
 
-# According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between 
-# two nodes p and q as the lowest node in T that has both p and q as descendants 
+# According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between
+# two nodes p and q as the lowest node in T that has both p and q as descendants
 # (where we allow a node to be a descendant of itself).”
 
 # Example 1:
@@ -20,7 +20,7 @@
 # Example 3:
 # Input: root = [2,1], p = 2, q = 1
 # Output: 2
- 
+
 # Constraints:
 # The number of nodes in the tree is in the range [2, 105].
 # -109 <= Node.val <= 109
@@ -28,25 +28,29 @@
 # p != q
 # p and q will exist in the BST.
 
+
 class TreeNode:
     def __init__(self, x):
         self = x
         self.left = None
         self.right = None
 
+
 class Solution:
-    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+    def lowestCommonAncestor(
+        self, root: TreeNode, p: TreeNode, q: TreeNode
+    ) -> TreeNode:
         """
-        We will rely upon the invariant of the BST to solve the exercise. 
+        We will rely upon the invariant of the BST to solve the exercise.
         We know that the left subtree of each node contains nodes with smaller values and the right subtree
-        contains nodes with greater values. We also know that if two nodes, x and y, are on different 
-        subtrees of a node z (one in the left portion and one in the right portion), then x and y have z 
+        contains nodes with greater values. We also know that if two nodes, x and y, are on different
+        subtrees of a node z (one in the left portion and one in the right portion), then x and y have z
         as the lowest common ancestor.
 
         Time -> O(log N) since we half the nodes we are searching for each time
         Space -> O(1)
         """
-        while(root!=None):
+        while root != None:
             if p.val < root.val and q.val < root.val:
                 root = root.left
             elif p.val > root.val and q.val > root.val:
@@ -54,16 +58,18 @@ class Solution:
             else:
                 return root
         return root
-    
-    def lowestCommonAncestor2(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+
+    def lowestCommonAncestor2(
+        self, root: TreeNode, p: TreeNode, q: TreeNode
+    ) -> TreeNode:
         """
         Time -> O(log N) since we half the nodes we are searching for each time
         Space -> O(1)
         """
-        while(root!=None):
-            if root.val < min(p.val,q.val):
+        while root != None:
+            if root.val < min(p.val, q.val):
                 root = root.right
-            elif root.val > max(p.val,q.val):
+            elif root.val > max(p.val, q.val):
                 root = root.left
             else:
                 return root

@@ -2,7 +2,7 @@ from typing import List
 
 # https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
 
-# Suppose an array of length n sorted in ascending order is rotated between 1 and n times. 
+# Suppose an array of length n sorted in ascending order is rotated between 1 and n times.
 # For example, the array nums = [0,1,2,4,5,6,7] might become:
 
 # [4,5,6,7,0,1,2] if it was rotated 4 times.
@@ -26,8 +26,8 @@ from typing import List
 # Example 3:
 # Input: nums = [11,13,15,17]
 # Output: 11
-# Explanation: The original array was [11,13,15,17] and it was rotated 4 times. 
- 
+# Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
+
 # Constraints:
 # n == nums.length
 # 1 <= n <= 5000
@@ -35,18 +35,19 @@ from typing import List
 # All the integers of nums are unique.
 # nums is sorted and rotated between 1 and n times.
 
+
 def findMin(nums: List[int]) -> int:
     """
     Time -> O(N)
     Space -> O(1)
     """
-    
+
     n = len(nums)
 
     if n < 2:
         return nums[0]
-    
-    low, high = 0, n-1
+
+    low, high = 0, n - 1
 
     result = min(nums[low], nums[high])
 
@@ -55,7 +56,7 @@ def findMin(nums: List[int]) -> int:
             result = min(result, nums[low])
             break
         # binary search
-        mid = (high+low) // 2
+        mid = (high + low) // 2
         result = min(result, nums[mid])
 
         # check right
@@ -63,12 +64,13 @@ def findMin(nums: List[int]) -> int:
             low = mid + 1
         else:
             # check left
-            high = mid-1
-            
+            high = mid - 1
+
     return result
 
+
 if __name__ == "__main__":
-    nums = [3,4,5,1,2]
+    nums = [3, 4, 5, 1, 2]
     output = 1
 
     print(findMin(nums) == output)

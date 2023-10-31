@@ -1,11 +1,13 @@
 from linked_lists.base import BaseNode
 
+
 class Node(BaseNode):
     def __init__(self, data=None):
         super().__init__(data)
 
     def __repr__(self) -> str:
         return f"Node({self.data})"
+
 
 # https://leetcode.com/problems/reverse-linked-list/description/
 # Given the head of a singly linked list, reverse the list, and return the reversed list.
@@ -17,6 +19,7 @@ class Node(BaseNode):
 # Example 2:
 # Input: head = [1,2]
 # Output: [2,1]
+
 
 # Example 3:
 # Input: head = []
@@ -34,15 +37,16 @@ def reverseList(head):
 
     prev = None
     temp = head
-    
+
     while temp:
         next = temp.next
         temp.next = prev
         prev = temp
         temp = next
-    
+
     print(prev)
     return prev
+
 
 def reverseListRecursive(head):
     """
@@ -62,6 +66,7 @@ def reverseListRecursive(head):
 
     return temp
 
+
 # https://leetcode.com/problems/reverse-linked-list-ii/description/
 # Given the head of a singly linked list and two integers left and right where left <= right,
 # reverse the nodes of the list from position left to position right, and return the reversed list.
@@ -69,6 +74,7 @@ def reverseListRecursive(head):
 # Example 1:
 # Input: head = [1,2,3,4,5], left = 2, right = 4
 # Output: [1,4,3,2,5]
+
 
 # Example 2:
 # Input: head = [5], left = 1, right = 1
@@ -86,28 +92,29 @@ def reverseBetween(head, left, right):
     if not head or not head.next:
         return head
 
-    dummy=Node(0)
-    dummy.next=head
+    dummy = Node(0)
+    dummy.next = head
 
-    prev=dummy
-    curr=dummy.next
+    prev = dummy
+    curr = dummy.next
 
-    for i in range(left-1):
+    for i in range(left - 1):
         curr = curr.next
         prev = prev.next
-    
+
     print("prev", prev)
     print("curr", curr)
 
     # reverse nodes in between
-    for i in range(right-left):
+    for i in range(right - left):
         if curr and curr.next:
-            temp=curr.next
-            curr.next=temp.next
-            temp.next=prev.next
-            prev.next=temp  
+            temp = curr.next
+            curr.next = temp.next
+            temp.next = prev.next
+            prev.next = temp
 
     return dummy.next
+
 
 if __name__ == "__main__":
     pass

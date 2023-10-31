@@ -13,38 +13,40 @@ from typing import List
 # Example 2:
 # Input: nums = [0]
 # Output: [[],[0]]
- 
+
 # Constraints:
 # 1 <= nums.length <= 10
 # -10 <= nums[i] <= 10
+
 
 def subsetsWithDup(nums: List[int]) -> List[List[int]]:
     """
     Time -> O()
     Space -> O(N)
     """
-    
+
     subsets = []
 
     nums.sort()
-    
+
     def dfs(nums, subset, subsets):
         if len(nums) < 0:
             return
-        
+
         subsets.append(subset)
 
         for i in range(len(nums)):
-            if i >= 1 and nums[i] == nums[i-1]:
+            if i >= 1 and nums[i] == nums[i - 1]:
                 continue
-            dfs(nums[i+1:],subset+[nums[i]], subsets)
-    
+            dfs(nums[i + 1 :], subset + [nums[i]], subsets)
+
     dfs(nums, [], subsets)
 
     return subsets
 
+
 if __name__ == "__main__":
-    nums = [1,2,2]
-    output = [[],[1],[1,2],[1,2,2],[2],[2,2]]
+    nums = [1, 2, 2]
+    output = [[], [1], [1, 2], [1, 2, 2], [2], [2, 2]]
 
     print(subsetsWithDup(nums))

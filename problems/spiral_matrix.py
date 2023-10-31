@@ -18,6 +18,7 @@ from typing import List
 # 1 <= m, n <= 10
 # -100 <= matrix[i][j] <= 100
 
+
 def spiralOrder(matrix: List[List[int]]) -> List[int]:
     """
     Time -> O(M*N)
@@ -33,13 +34,13 @@ def spiralOrder(matrix: List[List[int]]) -> List[int]:
         # move right
         for i in range(left, right):
             result.append(matrix[top][i])
-        
+
         # move to next row
         top += 1
 
         # move down
         for i in range(top, bottom):
-            result.append(matrix[i][right-1]) # -1 because it's out of bounds
+            result.append(matrix[i][right - 1])  # -1 because it's out of bounds
 
         # reduce window
         right -= 1
@@ -49,28 +50,28 @@ def spiralOrder(matrix: List[List[int]]) -> List[int]:
             break
 
         # move left
-        for i in range(right-1, left-1, -1):
-            result.append(matrix[bottom-1][i])
+        for i in range(right - 1, left - 1, -1):
+            result.append(matrix[bottom - 1][i])
 
         # reduce window
         bottom -= 1
 
         # move up
-        for i in range(bottom-1, top-1, -1):
+        for i in range(bottom - 1, top - 1, -1):
             result.append(matrix[i][left])
-        
+
         # reduce window
         left += 1
-        
+
     return result
 
-if __name__ == '__main__':
-    matrix = [[1,2,3],[4,5,6],[7,8,9]]
-    output = [1,2,3,6,9,8,7,4,5]
 
-    matrix2 = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-    output2 = [1,2,3,4,8,12,11,10,9,5,6,7]
+if __name__ == "__main__":
+    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    output = [1, 2, 3, 6, 9, 8, 7, 4, 5]
+
+    matrix2 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+    output2 = [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
 
     print(spiralOrder(matrix) == output)
     print(spiralOrder(matrix2) == output2)
-                    

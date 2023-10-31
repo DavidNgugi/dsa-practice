@@ -21,6 +21,7 @@ from typing import List
 # -10 <= nums[i] <= 10
 # The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 
+
 def maxProduct(nums: List[int]) -> int:
     """
     Kadane's algorithm
@@ -38,15 +39,16 @@ def maxProduct(nums: List[int]) -> int:
     currProdLeft = currProdRight = 1
     for i in range(n):
         currProdLeft *= nums[i]
-        currProdRight *= nums[n-1-i]
+        currProdRight *= nums[n - 1 - i]
         maxProd = max(maxProd, currProdLeft, currProdRight)
         if currProdLeft == 0:
             currProdLeft = 1
 
         if currProdRight == 0:
             currProdRight = 1
-    
+
     return maxProd
+
 
 def maxProductDynamic(nums: List[int]) -> int:
     """
@@ -72,11 +74,12 @@ def maxProductDynamic(nums: List[int]) -> int:
         currMin = min(currMin * n, currMax * n, n)
         currMax = max(currMax * n, tmp, n)
         maxProd = max(maxProd, currMax)
-        
+
     return maxProd
 
+
 if __name__ == "__main__":
-    nums = [2,3,-2,4]
+    nums = [2, 3, -2, 4]
     output = 6
 
     print(maxProduct(nums) == output)

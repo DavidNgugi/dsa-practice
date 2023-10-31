@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/same-tree/description/
 # Given the roots of two binary trees p and q, write a function to check if they are the same or not.
 
-# Two binary trees are considered the same if they are structurally identical, 
+# Two binary trees are considered the same if they are structurally identical,
 # and the nodes have the same value.
 
 # Example 1:
@@ -16,7 +16,7 @@
 
 # Input: p = [1,2,1], q = [1,1,2]
 # Output: false
- 
+
 # Constraints:
 
 # The number of nodes in both trees is in the range [0, 100].
@@ -37,6 +37,7 @@ def isSameTree(p, q):
         return False
 
     return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+
 
 if __name__ == "__main__":
     pass

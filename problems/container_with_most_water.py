@@ -16,6 +16,7 @@
 # Input: height = [1,1]
 # Output: 1
 
+
 def maxArea(height):
     """
     :type height: List[int]
@@ -30,14 +31,14 @@ def maxArea(height):
     # advance inwards depending on height of left and right
     # Time -> O(n)
     # Space -> O(1)
-    
+
     l = 0
     r = len(height) - 1
 
     max_area = 0
 
-    while l < r: 
-        current_area = min(height[l],height[r]) * (r-l)
+    while l < r:
+        current_area = min(height[l], height[r]) * (r - l)
         max_area = max(current_area, max_area)
         if height[l] == height[r]:
             l += 1
@@ -50,8 +51,8 @@ def maxArea(height):
     return max_area
 
 
-if __name__ == '__main__':
-    height = [1,8,6,2,5,4,8,3,7]
+if __name__ == "__main__":
+    height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
     output = 49
 
     print(maxArea(height) == output)

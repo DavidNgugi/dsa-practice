@@ -18,10 +18,11 @@ from typing import Optional
 # Example 3:
 # Input: root = []
 # Output: True
- 
+
 # Constraints:
 # The number of nodes in the tree is in the range [0, 5000].
 # -104 <= Node.val <= 104
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -30,26 +31,27 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         """
         Time -> O(N) i.e N is the number of nodes in the binary tree.
         Space -> O(N) i.e N is height of binary tree,
-        This is because the recursive calls consume space on the call stack, 
-        and in the worst case, the height of the tree is equal to the number of nodes in the tree, 
+        This is because the recursive calls consume space on the call stack,
+        and in the worst case, the height of the tree is equal to the number of nodes in the tree,
         resulting in O(N) space complexity.
         """
         if not root:
             return True
-        
+
         def dfs(node):
             if not node:
                 return 0
-            
+
             left = dfs(node.left)
             right = dfs(node.right)
-            
-            # If either the left subtree or the right subtree is not height-balanced 
+
+            # If either the left subtree or the right subtree is not height-balanced
             if left == -1 or right == -1:
                 return -1
 
@@ -57,9 +59,8 @@ class Solution:
             if abs(left - right) > 1:
                 return -1
 
-            # calculates the height of the current subtree as 1 plus the maximum of the heights 
+            # calculates the height of the current subtree as 1 plus the maximum of the heights
             # of the left and right subtrees
             return 1 + max(left, right)
 
         return True if dfs(root) != -1 else False
-

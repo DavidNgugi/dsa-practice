@@ -4,7 +4,7 @@ from typing import Optional
 
 # You are given the heads of two sorted linked lists list1 and list2.
 
-# Merge the two lists into one sorted list. The list should be made by splicing together the 
+# Merge the two lists into one sorted list. The list should be made by splicing together the
 # nodes of the first two lists.
 
 # Return the head of the merged linked list.
@@ -26,17 +26,21 @@ from typing import Optional
 # -100 <= Node.val <= 100
 # Both list1 and list2 are sorted in non-decreasing order.
 
+
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-def mergeTwoLists(list1: Optional[ListNode], list2:  Optional[ListNode]) -> Optional[ListNode]:
+
+def mergeTwoLists(
+    list1: Optional[ListNode], list2: Optional[ListNode]
+) -> Optional[ListNode]:
     """
     Time -> O(N)
     Space -> O(N)
     """
-    
+
     if not list1:
         return list2
 

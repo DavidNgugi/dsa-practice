@@ -75,7 +75,7 @@ def longestPaliindromeEfficient(s: str) -> str:
     ans = ""
 
     for i in range(n):
-        ans = max(ans, getPalindrome(s, i, i), getPalindrome(s, i, i+1), key=len)
+        ans = max(ans, getPalindrome(s, i, i), getPalindrome(s, i, i + 1), key=len)
     return ans
 
 

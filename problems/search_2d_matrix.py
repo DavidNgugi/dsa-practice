@@ -24,24 +24,26 @@ from typing import List
 # 1 <= m, n <= 100
 # -104 <= matrix[i][j], target <= 104
 
+
 def searchMatrix(matrix: List[List[int]], target: int) -> bool:
     """
     :type matrix: List[List[int]]
     :type target: int
     :rtype: bool
     """
-    
+
     result = False
 
     for i in range(len(matrix)):
         if findTargetInRow(matrix[i], target):
             result = True
-            break                
-                
+            break
+
     return result
 
+
 def findTargetInRow(row: List[int], target: int) -> bool:
-    low, high = 0, len(row)-1
+    low, high = 0, len(row) - 1
 
     result = False
 
@@ -57,7 +59,7 @@ def findTargetInRow(row: List[int], target: int) -> bool:
             break
         else:
             high -= 1
-        
+
         mid = (low + high) // 2
 
         if row[mid] == target:
@@ -65,8 +67,9 @@ def findTargetInRow(row: List[int], target: int) -> bool:
             break
     return result
 
+
 if __name__ == "__main__":
-    matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
+    matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]]
     target = 3
     output = True
 

@@ -2,7 +2,7 @@ from typing import List
 
 # https://leetcode.com/problems/combination-sum-ii/description/
 
-# Given a collection of candidate numbers (candidates) and a target number (target), 
+# Given a collection of candidate numbers (candidates) and a target number (target),
 # find all unique combinations in candidates where the candidate numbers sum to target.
 
 # Each number in candidates may only be used once in the combination.
@@ -11,7 +11,7 @@ from typing import List
 
 # Example 1:
 # Input: candidates = [10,1,2,7,6,1,5], target = 8
-# Output: 
+# Output:
 # [
 # [1,1,6],
 # [1,2,5],
@@ -21,16 +21,17 @@ from typing import List
 
 # Example 2:
 # Input: candidates = [2,5,2,1,2], target = 5
-# Output: 
+# Output:
 # [
 # [1,2,2],
 # [5]
 # ]
- 
+
 # Constraints:
 # 1 <= candidates.length <= 100
 # 1 <= candidates[i] <= 50
 # 1 <= target <= 30
+
 
 def combinationSum2(candidates: List[int], target: int) -> List[List[int]]:
     """
@@ -39,7 +40,7 @@ def combinationSum2(candidates: List[int], target: int) -> List[List[int]]:
     """
     if len(candidates) < 2:
         return [candidates] if candidates[0] == target else []
-    
+
     combinations = []
 
     # assume not sorted
@@ -58,17 +59,18 @@ def combinationSum2(candidates: List[int], target: int) -> List[List[int]]:
             if nums[i] > target:
                 continue
             # skip if previous value is duplicate
-            if i >= 1 and nums[i] == nums[i-1]:
+            if i >= 1 and nums[i] == nums[i - 1]:
                 continue
             # skip repeated value thus i+1
-            dfs(nums[i+1:], target-nums[i], combination+[nums[i]], combinations)
-    
+            dfs(nums[i + 1 :], target - nums[i], combination + [nums[i]], combinations)
+
     dfs(candidates, target, [], combinations)
     return combinations
 
+
 if __name__ == "__main__":
-    candidates = [10,1,2,7,6,1,5]
+    candidates = [10, 1, 2, 7, 6, 1, 5]
     target = 8
-    output = [[1,1,6],[1,2,5],[1,7],[2,6]]
+    output = [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
 
     print(combinationSum2(candidates, target))

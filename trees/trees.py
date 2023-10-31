@@ -1,3 +1,4 @@
+import sys
 from pprint import pprint
 from typing import TypeVar, List
 
@@ -141,6 +142,19 @@ class Tree:
     def display(self, root_node):
         print(str(root_node.data), end="->")
 
+    def displayTree(self, currPtr, indent="", last=None):
+        if currPtr != None:
+            sys.stdout.write(indent)
+            if last:
+                sys.stdout.write("R----")
+                indent += "     "
+            else:
+                sys.stdout.write("L----")
+                indent += "|    "
+            print(currPtr.data)
+            self.displayTree(currPtr.left, indent, False)
+            self.displayTree(currPtr.right, indent, True)
+
 
 def bfs(start):
     """Go down the tree by level/layer"""
@@ -182,6 +196,7 @@ def dfs_inner(node, visited):
         print(node.data)
         return dfs_inner(node.left, visited) or dfs_inner(node.right, visited)
 
+
 def invertTree(root):
     """
     :type root: TreeNode
@@ -190,14 +205,15 @@ def invertTree(root):
 
     if not root:
         return
-    
+
     left = invertTree(root.left)
     right = invertTree(root.right)
 
     root.left = right
     root.right = left
-            
+
     return root
+
 
 if __name__ == "__main__":
     tree = Tree()
@@ -207,7 +223,9 @@ if __name__ == "__main__":
     tree.root.left.right = Node(6)
     tree.root.right = Node(9)
 
-    print("Inorder recursive:")
+    print("Tree:")
+    tree.displayTree(tree.root)
+    print("\nInorder recursive:")
     tree.inOrderRecursive(tree.root)
     print("\nInorder Iterative:")
     tree.inOrderIterative(tree.root)
@@ -225,4 +243,6 @@ if __name__ == "__main__":
     # print("\ndfs:")
     # dfs(tree.root)
 
-    # invertTree(tree.root)
+    invertTree(tree.root)
+    print("\nInverted Tree:")
+    tree.displayTree(tree.root)

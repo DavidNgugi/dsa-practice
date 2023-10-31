@@ -5,10 +5,10 @@ from typing import List
 # There is an integer array nums sorted in ascending order (with distinct values).
 
 # Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) s
-# uch that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). 
+# uch that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
 # For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
 
-# Given the array nums after the possible rotation and an integer target, return the index of target 
+# Given the array nums after the possible rotation and an integer target, return the index of target
 # if it is in nums, or -1 if it is not in nums.
 
 # You must write an algorithm with O(log n) runtime complexity.
@@ -24,7 +24,8 @@ from typing import List
 # Example 3:
 # Input: nums = [1], target = 0
 # Output: -1
- 
+
+
 # Constraints:
 # 1 <= nums.length <= 5000
 # -104 <= nums[i] <= 104
@@ -35,13 +36,13 @@ def search(nums: List[int], target: int) -> int:
     Time -> O(N)
     Space -> O(1)
     """
-    
+
     n = len(nums)
 
     if n < 2:
         return 0 if nums[0] == target else -1
-    
-    low, high = 0, n-1
+
+    low, high = 0, n - 1
 
     result = -1
 
@@ -57,7 +58,7 @@ def search(nums: List[int], target: int) -> int:
             break
         else:
             high -= 1
-        
+
         mid = (low + high) // 2
 
         if nums[mid] == target:
@@ -66,8 +67,9 @@ def search(nums: List[int], target: int) -> int:
 
     return result
 
+
 if __name__ == "__main__":
-    nums = [4,5,6,7,0,1,2]
+    nums = [4, 5, 6, 7, 0, 1, 2]
     target = 0
     output = 4
 

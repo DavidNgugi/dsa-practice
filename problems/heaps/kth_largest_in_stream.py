@@ -2,15 +2,15 @@ from heapq import heappush, heappop
 from typing import List
 
 # https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
-# Design a class to find the kth largest element in a stream. Note that it is the kth largest element 
+# Design a class to find the kth largest element in a stream. Note that it is the kth largest element
 # in the sorted order, not the kth distinct element.
 
 # Implement KthLargest class:
 
 # KthLargest(int k, int[] nums) Initializes the object with the integer k and the stream of integers nums.
-# int add(int val) Appends the integer val to the stream and returns the element representing the kth 
+# int add(int val) Appends the integer val to the stream and returns the element representing the kth
 # largest element in the stream.
- 
+
 # Example 1:
 # Input
 # ["KthLargest", "add", "add", "add", "add", "add"]
@@ -34,10 +34,10 @@ from typing import List
 # -104 <= val <= 104
 # At most 104 calls will be made to add.
 # It is guaranteed that there will be at least k elements in the array when you search for the kth element.
-    
-class KthLargest(object):
 
-    def __init__(self, k:int, nums: List[int]):
+
+class KthLargest(object):
+    def __init__(self, k: int, nums: List[int]):
         """
         Time -> O(log N)
         Space -> O(N)
@@ -46,14 +46,15 @@ class KthLargest(object):
         self.stream = []
         for n in nums:
             self.add(n)
-        
-    def add(self, val:int) -> int:
+
+    def add(self, val: int) -> int:
         heappush(self.stream, val)
 
         if len(self.stream) > self.k:
             heappop(self.stream)
         return self.stream[0]
-        
+
+
 if __name__ == "__main__":
     # Your KthLargest object will be instantiated and called as such:
     # obj = KthLargest(k, nums)
@@ -63,5 +64,5 @@ if __name__ == "__main__":
     print(kthLargest.add(3))  # return 4
     print(kthLargest.add(5))  # return 5
     print(kthLargest.add(10))  # return 5
-    print(kthLargest.add(9))   # return 8
-    print(kthLargest.add(4)) # return 8
+    print(kthLargest.add(9))  # return 8
+    print(kthLargest.add(4))  # return 8

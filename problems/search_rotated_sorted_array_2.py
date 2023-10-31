@@ -4,11 +4,11 @@ from typing import List
 
 # There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
 
-# Before being passed to your function, nums is rotated at an unknown pivot index k (0 <= k < nums.length) 
-# such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). 
+# Before being passed to your function, nums is rotated at an unknown pivot index k (0 <= k < nums.length)
+# such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
 # For example, [0,1,2,4,4,4,5,6,6,7] might be rotated at pivot index 5 and become [4,5,6,6,7,0,1,2,4,4].
 
-# Given the array nums after the rotation and an integer target, 
+# Given the array nums after the rotation and an integer target,
 # return true if target is in nums, or false if it is not in nums.
 
 # You must decrease the overall operation steps as much as possible.
@@ -21,6 +21,7 @@ from typing import List
 # Input: nums = [2,5,6,0,0,1,2], target = 3
 # Output: false
 
+
 # Constraints:
 # 1 <= nums.length <= 5000
 # -104 <= nums[i] <= 104
@@ -31,13 +32,13 @@ def search(nums: List[int], target: int) -> int:
     Time -> O(N)
     Space -> O(1)
     """
-        
+
     n = len(nums)
 
     if n < 2:
         return nums[0] == target
-    
-    low, high = 0, n-1
+
+    low, high = 0, n - 1
 
     result = False
 
@@ -47,7 +48,7 @@ def search(nums: List[int], target: int) -> int:
             break
         else:
             low += 1
-        
+
         if nums[high] == target:
             result = True
             break
@@ -64,7 +65,7 @@ def search(nums: List[int], target: int) -> int:
 
 
 if __name__ == "__main__":
-    nums = [2,5,6,0,0,1,2]
+    nums = [2, 5, 6, 0, 0, 1, 2]
     target = 0
     output = True
 

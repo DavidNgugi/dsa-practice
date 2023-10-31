@@ -21,7 +21,8 @@ from typing import List
 # 1 <= k <= nums.length <= 105
 # -104 <= nums[i] <= 104
 
-def findKthLargest(nums: List[int], k:int)->int:
+
+def findKthLargest(nums: List[int], k: int) -> int:
     """
     Time -> O(log N)
     Space -> O(N)
@@ -33,10 +34,11 @@ def findKthLargest(nums: List[int], k:int)->int:
 
         if len(heap) > k:
             heapq.heappop(heap)
-    
+
     return heap[0]
 
-def findKthLargestWithSorting(nums: List[int], k:int)->int:
+
+def findKthLargestWithSorting(nums: List[int], k: int) -> int:
     """
     Time -> O(Nlog N)
     Space -> O(N)
@@ -44,12 +46,13 @@ def findKthLargestWithSorting(nums: List[int], k:int)->int:
 
     nums = SortedList(nums)
 
-    return nums[len(nums)-k]
-    
+    return nums[len(nums) - k]
+
+
 if __name__ == "__main__":
-    nums = [3,2,1,5,6,4]
+    nums = [3, 2, 1, 5, 6, 4]
     k = 2
     output = 5
-    
+
     print(findKthLargest(nums, k))
     print(findKthLargestWithSorting(nums, k))

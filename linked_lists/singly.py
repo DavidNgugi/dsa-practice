@@ -128,7 +128,7 @@ class SinglyLinkedList:
                         nextNode.data = temp
                     nextNode = nextNode.next
                 current = current.next
-    
+
     def reverseList(self, head):
         """
         :type head: ListNode
@@ -140,16 +140,16 @@ class SinglyLinkedList:
 
         prev = None
         temp = head
-        
+
         while temp:
             next = temp.next
             temp.next = prev
             prev = temp
             temp = next
-        
+
         print(prev)
         return prev
-    
+
     def reverseListRecursive(self, head):
         """
         :type head: ListNode

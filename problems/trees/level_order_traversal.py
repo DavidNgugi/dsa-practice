@@ -17,10 +17,11 @@ from typing import List, Optional
 # Example 3:
 # Input: root = []
 # Output: []
- 
+
 # Constraints:
 # The number of nodes in the tree is in the range [0, 2000].
 # -1000 <= Node.val <= 1000
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -28,19 +29,18 @@ class TreeNode:
         self.left = left
         self.right = right
 
-class Solution:
-   
 
+class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         """
         Iterative approach, use queue
         Time -> O(N)
         Space -> O(N)
         """
-         
-        if not root: 
-           return []
-        
+
+        if not root:
+            return []
+
         output = defaultdict(list)
 
         q = deque([root])
@@ -62,7 +62,6 @@ class Solution:
 
         return output.values()
 
-
     def levelOrderRecursive(self, root: Optional[TreeNode]) -> List[List[int]]:
         """
         DFS approach -> Get nodes in-order (left to right level by level)
@@ -70,21 +69,19 @@ class Solution:
         Space -> O(N)
         """
 
-        if not root: 
-           return []
-        
+        if not root:
+            return []
+
         output = defaultdict(list)
 
         def inorder(node, level):
             if not node:
                 return
             nonlocal output
-            inorder(node.left, level+1)
+            inorder(node.left, level + 1)
             output[level].append(node.val)
-            inorder(node.right, level+1)
+            inorder(node.right, level + 1)
 
-            
         inorder(root, 1)
 
-        return [v for _,v in sorted(output.items())]
-    
+        return [v for _, v in sorted(output.items())]

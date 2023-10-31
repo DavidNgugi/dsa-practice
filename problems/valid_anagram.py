@@ -49,4 +49,4 @@ def isAnagram(s, t):
 
 if __name__ == "__main__":
     s, t = "anagram", "nagaram"
-    print(isAnagram(s,t))
+    print(isAnagram(s, t))

@@ -13,13 +13,14 @@ from collections import Counter
 
 # Input: nums = [1,2]
 # Output: [1,2]
- 
+
 
 # Constraints:
 
 # 1 <= nums.length <= 5 * 104
 # -109 <= nums[i] <= 109
- 
+
+
 # Follow up: Could you solve the problem in linear time and in O(1) space?
 def majorityElement(nums):
     """
@@ -33,10 +34,11 @@ def majorityElement(nums):
 
     if n == 1:
         return nums
-        
-    count = n/3
-    
+
+    count = n / 3
+
     return [k for k, v in Counter(nums).items() if v > count]
+
 
 def majorityElementBoyer(nums):
     """
@@ -68,7 +70,7 @@ def majorityElementBoyer(nums):
             counter_2 -= 1
 
     # check if they meet count/threshhold
-    count = len(nums)/3
+    count = len(nums) / 3
     results = []
 
     # second pass to set the correct counts
@@ -89,10 +91,10 @@ def majorityElementBoyer(nums):
     return results
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # nums = [3,2,3]
     # nums = [1,2]
     # nums = [2,2]
     # nums = [3,3,4]
-    nums = [2,2,1,3]
+    nums = [2, 2, 1, 3]
     print(majorityElementBoyer(nums))

@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/trapping-rain-water/description/
-# Given n non-negative integers representing an elevation map where the width of each bar is 1, 
+# Given n non-negative integers representing an elevation map where the width of each bar is 1,
 # compute how much water it can trap after raining.
 
 # Example 1:
@@ -11,7 +11,8 @@
 # Input: height = [4,2,0,3,2,5]
 # Output: 9
 
-def trap( height):
+
+def trap(height):
     """
     :type height: List[int]
     :rtype: int
@@ -31,7 +32,7 @@ def trap( height):
     rightMax = 0
     r = len(height) - 1
     units = 0
-    
+
     while l <= r:
         if height[l] <= height[r]:
             leftMax = max(height[l], leftMax)
@@ -44,8 +45,9 @@ def trap( height):
 
     return units
 
-if __name__ == '__main__':
-    height = [0,1,0,2,1,0,1,3,2,1,2,1]
+
+if __name__ == "__main__":
+    height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
     output = 6
 
     print(trap(height) == output)

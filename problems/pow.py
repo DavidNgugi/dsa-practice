@@ -24,34 +24,36 @@ from functools import cache
 # Either x is not zero or n > 0.
 # -104 <= xn <= 104
 
+
 def myPow(x: float, n: int) -> float:
-        """
-        Binary Exponentiation Technique
-        Reasoning: To compute base^exponent, we can calculate base^(exponent/2) and then square it.
-        Time -> O(log N)
-        Space -> O(1)
-        """
-        if x == 0:
-            return 0
-        
-        if n == 0:
-            return 1
+    """
+    Binary Exponentiation Technique
+    Reasoning: To compute base^exponent, we can calculate base^(exponent/2) and then square it.
+    Time -> O(log N)
+    Space -> O(1)
+    """
+    if x == 0:
+        return 0
 
-        def calc(x,n):
-            curr = 1
-            while n != 0:
-                if n % 2 == 0:
-                    x = x * x
-                    # reduce search space by half
-                    n //= 2
-                curr *= x
-                n -= 1
-            return curr
+    if n == 0:
+        return 1
 
-        if n > 0:
-            return calc(x,abs(n))
-        elif n < 0:
-            return 1/calc(x,abs(n))
+    def calc(x, n):
+        curr = 1
+        while n != 0:
+            if n % 2 == 0:
+                x = x * x
+                # reduce search space by half
+                n //= 2
+            curr *= x
+            n -= 1
+        return curr
+
+    if n > 0:
+        return calc(x, abs(n))
+    elif n < 0:
+        return 1 / calc(x, abs(n))
+
 
 # cache to avoid time exceeding
 @cache
@@ -67,13 +69,16 @@ def myPowRecursive(x: float, n: int) -> float:
     elif n == 1:
         return x
     elif n == -1:
-        return 1/x
-    return myPowRecursive(x, n//2) * myPowRecursive(x, n//2) * myPowRecursive(x, n%2)
+        return 1 / x
+    return (
+        myPowRecursive(x, n // 2) * myPowRecursive(x, n // 2) * myPowRecursive(x, n % 2)
+    )
+
 
 if __name__ == "__main__":
     x = 2.00000
     n = 10
     output = 1024.00000
 
-    print(myPow(x,n) == output)
-    print(myPowRecursive(x,n) == output)
+    print(myPow(x, n) == output)
+    print(myPowRecursive(x, n) == output)

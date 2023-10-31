@@ -14,6 +14,7 @@
 # Input: root = []
 # Output: []
 
+
 def invertTree(root):
     """
     :type root: TreeNode
@@ -22,11 +23,11 @@ def invertTree(root):
 
     if not root:
         return
-    
+
     left = invertTree(root.left)
     right = invertTree(root.right)
 
     root.left = right
     root.right = left
-            
+
     return root
