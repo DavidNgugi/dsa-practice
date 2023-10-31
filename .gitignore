@@ -4,6 +4,7 @@ bin/
 .mypy_cache
 .pytest_cache
 .poetry-cache
+.ruff_cache
 .venv
 *.pyc
 *.pyo
